@@ -5,12 +5,14 @@ btn.addEventListener("click", palindrome);
 
 function palindrome() {
     const word = document.querySelector(".input-text").value;
-    const len = word.length;
-    for (let i = 0; i < len / 2; i++) {
-        if (word[i] !== word[len - 1 - i]) {
-            result.innerHTML = `${word.toUpperCase()} is not a palindrome`;
+    const re = /[^A-Za-z0-9]/g;
+    const wordReplaced = word.toLowerCase().replace(re, '');
+    const len = wordReplaced.length;
+    for (let i = 0; i < len/2; i++) {
+        if (wordReplaced[i] !== wordReplaced[len - 1 - i]) {
+            result.innerHTML = `${wordReplaced.toUpperCase()} is not a palindrome`;
         }else{
-            result.innerHTML = `${word.toUpperCase()} is a palindrome`;
+            result.innerHTML = `${wordReplaced.toUpperCase()} is a palindrome`;
         }
     }
 
